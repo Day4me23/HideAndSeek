@@ -8,8 +8,13 @@ public class AI : MonoBehaviour
     NavMeshAgent navMeshAgent;
     public Transform target;
     public Transform player;
+    [SerializeField]
+    GameObject p2;
     public State state;
     public bool arrivedAtTarget;
+
+    RaycastHit hit;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -21,18 +26,31 @@ public class AI : MonoBehaviour
         navMeshAgent.destination = target.position;
         arrivedAtTarget = navMeshAgent.remainingDistance < 1.5f;
 
-        Vector3 rotation = player.position - transform.position;
+        Vector3 rotation = p2.transform.position - transform.position;
         rotation = rotation.normalized;
 
 
-        RaycastHit hit;
         Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity);
-        Debug.Log(hit.transform);
+        //Debug.Log(hit.transform);
     }
     private void OnDrawGizmos()
     {
-        if (player != null)
-        Gizmos.DrawLine(player.position, transform.position);
+        if (p2 != null  && hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject);
+            if (hit.collider.gameObject == p2)
+            {
+                Gizmos.color = Color.blue;
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
+
+            Gizmos.DrawLine(p2.transform.position, transform.position);
+        }
+
+        
     }
 }
 
