@@ -43,8 +43,8 @@ public class DoorDoubleSlide : MonoBehaviour {
         Debug.Log("Door Collide");
         opening = true;
 
-        //AudioSource audio = GetComponent<AudioSource>();
-        //audio.Play();
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     //Something left? close doors
@@ -52,8 +52,8 @@ public class DoorDoubleSlide : MonoBehaviour {
     {
         opening = false;
 
-        //AudioSource audio = GetComponent<AudioSource>();
-        //audio.Play();
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 	
 
