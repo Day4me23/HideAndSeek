@@ -40,6 +40,7 @@ public class DoorDoubleSlide : MonoBehaviour {
     //Something approaching? open doors
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Door Collide");
         opening = true;
 
         AudioSource audio = GetComponent<AudioSource>();
