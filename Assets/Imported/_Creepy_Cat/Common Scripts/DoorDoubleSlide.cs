@@ -42,7 +42,7 @@ public class DoorDoubleSlide : MonoBehaviour {
     //Something approaching? open doors
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Door Collide");
+        // Debug.Log("Door Collide");
         if (!locked)
         {
             opening = true;

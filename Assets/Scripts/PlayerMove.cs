@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -45,6 +45,9 @@ public class PlayerMove : MonoBehaviour
         UpdateMovement();
         UpdateTablet();
         Interact();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Menu");
     }
 
     void UpdateMouseLook()
@@ -93,8 +96,9 @@ public class PlayerMove : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, 2.5f);
-
-        if (Input.GetKeyDown(KeyCode.E) && hit.transform.GetComponent<Interactable>() != null)
-            hit.transform.GetComponent<Interactable>().Interact();
+        Debug.Log(hit.transform);
+        if (Input.GetKeyDown(KeyCode.E))
+            if (hit.transform.GetComponent<Interactable>() != null)
+                hit.transform.GetComponent<Interactable>().Interact();
     }
 }

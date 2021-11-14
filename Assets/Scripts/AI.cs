@@ -46,7 +46,7 @@ public class AI : MonoBehaviour
             {
                 if(state != State.chasing && Vector3.Distance(lastPosition, transform.position) < .1)
                 {
-                    Debug.Log("AI Stuck");
+                    // Debug.Log("AI Stuck");
                     changeState(State.idle);
                 }
                 lastPosition = transform.position;
@@ -82,7 +82,7 @@ public class AI : MonoBehaviour
                     }*/
                     if (arrivedAtTarget)
                     {
-                        Debug.Log("Arrived");
+                        // Debug.Log("Arrived");
                         changeState(State.idle);
                     }
                     break;
@@ -121,7 +121,7 @@ public class AI : MonoBehaviour
         private void pickNewTarget()
     {
 
-        Debug.Log("Pick new target");
+       // Debug.Log("Pick new target");
         if (!checkPointsUptodate) {
             checkPoints.Clear();
             foreach (DoorDoubleSlide checkpoint in allCheckPoints)
@@ -159,7 +159,7 @@ public class AI : MonoBehaviour
                 }
                 
             }
-            Debug.Log("Checkpoint Count: " + checkPoints.Count);
+            // Debug.Log("Checkpoint Count: " + checkPoints.Count);
             int index = Random.Range(0, checkPoints.Count - 1);
             lastCheckpoint = checkPoints[index];
             navMeshAgent.destination = checkPoints[index].transform.TransformPoint(checkPoints[index].GetComponent<BoxCollider>().center);
@@ -193,7 +193,7 @@ public class AI : MonoBehaviour
 
     private void changeState(State newState)
     {
-        Debug.Log("New State: " + newState);
+        // Debug.Log("New State: " + newState);
         state = newState;
     }
 }

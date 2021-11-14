@@ -6,7 +6,7 @@ public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager instance;
 
-    float maxFuel = 60, currentfuel = 0;
+    public float maxFuel = 60, currentfuel = 0;
     Image fuelFillbar;
 
     public bool O_powerOn = false;
