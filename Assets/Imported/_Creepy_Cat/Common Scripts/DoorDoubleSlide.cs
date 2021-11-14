@@ -26,6 +26,8 @@ public class DoorDoubleSlide : MonoBehaviour {
     private float point = 0.0f;
     private bool opening = false;
 
+    public bool locked = false;
+
     //Record initial positions
 	void Start () {
         if (doorL){
@@ -41,10 +43,20 @@ public class DoorDoubleSlide : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Door Collide");
-        opening = true;
+        if (!locked)
+        {
+            opening = true;
 
-        AudioSource audio = GetComponent<AudioSource>();
-        audio.Play();
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
+        }else if (ObjectiveManager.instance.O_getKeycard)
+        {
+            locked = false;
+            opening = true;
+
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
+        }
     }
 
     //Something left? close doors
@@ -59,6 +71,7 @@ public class DoorDoubleSlide : MonoBehaviour {
 
     //Open or close doors
 	void Update () {
+
         // Direction selection
         if (directionType == Direction.X)
         {
