@@ -90,10 +90,8 @@ public class PlayerMove : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, 2.5f);
-        
-        if (Input.GetKeyDown(KeyCode.E))
-        {
 
-        }
+        if (Input.GetKeyDown(KeyCode.E) && hit.transform.GetComponent<Interactable>() != null)
+            hit.transform.GetComponent<Interactable>().Interact();
     }
 }
