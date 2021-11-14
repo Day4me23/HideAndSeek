@@ -8,5 +8,6 @@ public class OKey : Interactable
     {
         base.Interact();
         ObjectiveManager.instance.O_getKeycard = true;
+        Destroy(this.gameObject);
     }
 }

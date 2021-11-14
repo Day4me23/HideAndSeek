@@ -9,7 +9,7 @@ public class ORocket : Interactable
     {
         if (ObjectiveManager.instance.maxFuel == ObjectiveManager.instance.currentfuel)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(0);
         }
             base.Interact();
     }
