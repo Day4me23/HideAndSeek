@@ -170,7 +170,7 @@ MonoBehaviour:
   gravity: -13
   moveSmoothTime: 0.3
   mouseSmoothTime: 0.03
-  Tablet: {fileID: 0}
+  Tablet: {fileID: 1431971013619779466}
   lockCursor: 1
 --- !u!143 &1963569336344010672
 CharacterController:
