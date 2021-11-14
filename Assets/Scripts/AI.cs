@@ -44,7 +44,7 @@ public class AI : MonoBehaviour
 
             if(distanceCheckCount > 60)
             {
-                if(Vector3.Distance(lastPosition, transform.position) < .1)
+                if(state != State.chasing && Vector3.Distance(lastPosition, transform.position) < .1)
                 {
                     Debug.Log("AI Stuck");
                     changeState(State.idle);
@@ -69,13 +69,18 @@ public class AI : MonoBehaviour
             switch (state)
             {
                 case State.searching:
-                    
+                    /*
                     if (hit.collider != null && hit.collider.gameObject == player)
                     {
                         playerLastPos = player.transform.position;
                         changeState(State.chasing);
                         navMeshAgent.destination = player.transform.position;
                     }else if (arrivedAtTarget)
+                    {
+                        Debug.Log("Arrived");
+                        changeState(State.idle);
+                    }*/
+                    if (arrivedAtTarget)
                     {
                         Debug.Log("Arrived");
                         changeState(State.idle);
@@ -125,19 +130,20 @@ public class AI : MonoBehaviour
                 {
                     Vector3 testpoint = checkpoint.transform.TransformPoint(checkpoint.GetComponent<BoxCollider>().center);
                     //Debug.Log("Checkpoint distance: " + Vector3.Distance(testpoint, transform.position));
-                    if (Vector3.Distance(testpoint, transform.position) < 30 && Vector3.Distance(testpoint, transform.position) > 2)
-                    {
-                        //checkPoints.Add(checkpoint);
-                        /*
-                        Vector3 rotation = testpoint - transform.position;
-                        rotation = rotation.normalized;
-
-
-                        Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity);
-                        Debug.Log(hit.collider.gameObject.tag);
-                        if (hit.collider != null && hit.collider.gameObject.tag == "Checkpoint")
+                    //if (Vector3.Distance(testpoint, transform.position) < 30 && Vector3.Distance(testpoint, transform.position) > 2)
+                    if ( Vector3.Distance(testpoint, transform.position) > 2)
                         {
-                        */
+                            //checkPoints.Add(checkpoint);
+                            /*
+                            Vector3 rotation = testpoint - transform.position;
+                            rotation = rotation.normalized;
+
+
+                            Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity);
+                            Debug.Log(hit.collider.gameObject.tag);
+                            if (hit.collider != null && hit.collider.gameObject.tag == "Checkpoint")
+                            {
+                            */
                             //Debug.Log("Valid Checkpoint");
                             NavMeshPath path = new NavMeshPath();
                             if (navMeshAgent.CalculatePath(testpoint, path))
