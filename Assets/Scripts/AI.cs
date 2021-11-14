@@ -22,14 +22,9 @@ public class AI : MonoBehaviour
     private void Awake()
     {
         allCheckPoints = Object.FindObjectsOfType<DoorDoubleSlide>();
-        foreach(DoorDoubleSlide cp in allCheckPoints)
-        {
-            Debug.Log(cp);
-            Debug.Log(cp.transform.position);
-        }
         navMeshAgent = GetComponent<NavMeshAgent>();
-        state = State.idle;
-        state = State.searching;
+        changeState(State.idle);
+        changeState(State.searching);
         int index = Random.Range(0,allCheckPoints.Length-1);
         navMeshAgent.destination = allCheckPoints[index].transform.position;
 
@@ -54,12 +49,12 @@ public class AI : MonoBehaviour
                     if (hit.collider != null && hit.collider.gameObject == player)
                     {
                         playerLastPos = player.transform.position;
-                        state = State.chasing;
+                        changeState(State.chasing);
                         navMeshAgent.destination = player.transform.position;
                     }else if (arrivedAtTarget)
                     {
                         Debug.Log("Arrived");
-                        state = State.idle;
+                        changeState(State.idle);
                     }
                     break;
                 case State.chasing:
@@ -70,10 +65,10 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        navMeshAgent.destination = playerLastPos;
+                        //navMeshAgent.destination = playerLastPos;
                         if (arrivedAtTarget)
                         {
-                            state = State.idle;
+                            changeState(State.idle);
                         }
                     }
                     break;
@@ -88,10 +83,16 @@ public class AI : MonoBehaviour
         //Debug.Log(hit.transform);
     }
 
-    private void pickNewTarget()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        //Debug.Log("We collided");
+        //Debug.Log(collision.gameObject);
+    }
 
+        private void pickNewTarget()
+    {
+
+        Debug.Log("Pick new target");
         if (!checkPointsUptodate) {
             checkPoints.Clear();
             foreach (DoorDoubleSlide checkpoint in allCheckPoints)
@@ -114,7 +115,7 @@ public class AI : MonoBehaviour
             }
             int index = Random.Range(0, checkPoints.Count - 1);
             navMeshAgent.destination = checkPoints[index].transform.position;
-            state = State.searching;
+            changeState(State.searching);
         }
         else
         {
@@ -140,6 +141,12 @@ public class AI : MonoBehaviour
         }
 
         
+    }
+
+    private void changeState(State newState)
+    {
+        Debug.Log("New State: " + newState);
+        state = newState;
     }
 }
 
