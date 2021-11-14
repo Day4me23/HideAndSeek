@@ -25,9 +25,9 @@ public class AI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         changeState(State.idle);
         changeState(State.searching);
-        int index = Random.Range(0,allCheckPoints.Length-1);
-        navMeshAgent.destination = allCheckPoints[index].transform.position;
-
+        //int index = Random.Range(0,allCheckPoints.Length-1);
+        //navMeshAgent.destination = allCheckPoints[index].transform.position;
+        pickNewTarget();
     }
 
 
@@ -100,8 +100,8 @@ public class AI : MonoBehaviour
                 
                 if (Vector3.Distance(checkpoint.transform.position, transform.position) < 30 && Vector3.Distance(checkpoint.transform.position, transform.position) > 2)
                 {
-                    checkPoints.Add(checkpoint);
-                    /*
+                    //checkPoints.Add(checkpoint);
+                    
                     NavMeshPath path = new NavMeshPath();
                     if (navMeshAgent.CalculatePath(checkpoint.transform.position, path)){
                         if (path.status == NavMeshPathStatus.PathComplete)
@@ -109,7 +109,7 @@ public class AI : MonoBehaviour
                             checkPoints.Add(checkpoint);
                         }
                     }
-                    */
+                    
                 }
                 
             }
