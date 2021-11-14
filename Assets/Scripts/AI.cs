@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 
 public class AI : MonoBehaviour
 {
@@ -69,7 +71,7 @@ public class AI : MonoBehaviour
             switch (state)
             {
                 case State.searching:
-                    /*
+                    
                     if (hit.collider != null && hit.collider.gameObject == player)
                     {
                         playerLastPos = player.transform.position;
@@ -79,7 +81,7 @@ public class AI : MonoBehaviour
                     {
                         Debug.Log("Arrived");
                         changeState(State.idle);
-                    }*/
+                    }
                     if (arrivedAtTarget)
                     {
                         // Debug.Log("Arrived");
@@ -114,8 +116,13 @@ public class AI : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("We collided");
-        //Debug.Log(collision.gameObject);
+        if (collision.gameObject.tag == "Player") {
+            SceneManager.LoadScene(0);
+            /*
+            Debug.Log("We collided");
+            Debug.Log(collision.gameObject);
+            */
+        }
     }
 
         private void pickNewTarget()

@@ -15,6 +15,10 @@ public class ObjectiveManager : MonoBehaviour
     public bool O_findHealth = false;
     public bool O_getWeapon = false;
 
+    public float timer = 0;
+
+    public TextMeshProUGUI timerTxt;
+
     private void Awake()
     {
         instance = this;
@@ -22,6 +26,8 @@ public class ObjectiveManager : MonoBehaviour
     }
     void Update()
     {
+        timer += Time.deltaTime;
+        timerTxt.text = "Time Elapsed: " + (int)timer;
         if (O_fuel)
             currentfuel += Time.deltaTime;
         currentfuel = Mathf.Clamp(currentfuel, 0, maxFuel);

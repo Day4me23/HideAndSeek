@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
         Interact();
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(0);
     }
 
     void UpdateMouseLook()
@@ -96,7 +96,7 @@ public class PlayerMove : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, 2.5f);
-        Debug.Log(hit.transform);
+        //Debug.Log(hit.transform);
         if (Input.GetKeyDown(KeyCode.E))
             if (hit.transform.GetComponent<Interactable>() != null)
                 hit.transform.GetComponent<Interactable>().Interact();
