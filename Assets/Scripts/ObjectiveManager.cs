@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    private void Awake() => instance = this;
     public static ObjectiveManager instance;
 
     float maxFuel = 60, currentfuel = 0;
-    public Image fuelFillbar;
+    Image fuelFillbar;
 
     public bool O_powerOn = false;
     public bool O_fuel = false;
@@ -17,7 +15,12 @@ public class ObjectiveManager : MonoBehaviour
     public bool O_findHealth = false;
     public bool O_getWeapon = false;
 
-    private void Update()
+    private void Awake()
+    {
+        instance = this;
+        fuelFillbar = GameObject.Find("Fuelbar").GetComponent<Image>();
+    }
+    void Update()
     {
         if (O_fuel)
             currentfuel += Time.deltaTime;
