@@ -10,4 +10,6 @@ public class ObjectiveManager : MonoBehaviour
     public bool O_powerOn = false;
     public bool O_fuel = false;
     public bool O_getKeycard = false;
+    public bool O_findHealth = false;
+    public bool O_getWeapon = false;
 }
