@@ -599,7 +599,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8537724, y: 3.458665, z: 2.9393778}
+  m_Size: {x: 8, y: 3.458665, z: 4}
   m_Center: {x: -0.9632099, y: 1.7197518, z: 3.0040216}
 --- !u!82 &6438762591537599025
 AudioSource:
@@ -712,7 +712,7 @@ MonoBehaviour:
   doorL: {fileID: 6438762591537465514}
   doorR: {fileID: 6438762591537465516}
   directionType: 2
-  speed: 2
+  speed: 10
   openDistance: 1.6
 --- !u!65 &6438762591537599024
 BoxCollider:
@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1828960a5b7b6432ba63cfaa8999eaa7, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 1828960a5b7b6432ba63cfaa8999eaa7, type: 3}
       propertyPath: m_StaticEditorFlags
