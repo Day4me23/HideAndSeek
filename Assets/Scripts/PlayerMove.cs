@@ -11,6 +11,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
     [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
 
+    public Transform Tablet;
+    Vector3 tabletRestPos = new Vector3(0, -.25f, .2f);
+    Vector3 tabletLookPos = new Vector3(0, 0, .25f);
+    float percent = 0;
+
     [SerializeField] bool lockCursor = true;
 
     float cameraPitch = 0.0f;
@@ -37,6 +42,8 @@ public class PlayerMove : MonoBehaviour
     {
         UpdateMouseLook();
         UpdateMovement();
+        UpdateTablet();
+        Interact();
     }
 
     void UpdateMouseLook()
@@ -68,5 +75,25 @@ public class PlayerMove : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+    void UpdateTablet()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+            percent += Time.deltaTime * 1.8f;
+        else percent -= Time.deltaTime * 1.8f;
+
+        percent = Mathf.Clamp(percent, 0, 1);
+
+        Tablet.transform.localPosition = Vector3.Lerp(tabletRestPos, tabletLookPos, percent);
+    }
+    void Interact()
+    {
+        RaycastHit hit;
+        Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, 2.5f);
+        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+        }
     }
 }
