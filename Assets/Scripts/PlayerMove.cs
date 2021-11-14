@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
     [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
 
+    public bool hasBeenHit = false;
     public Transform Tablet;
     Vector3 tabletRestPos = new Vector3(0, -.25f, .2f);
     Vector3 tabletLookPos = new Vector3(0, 0, .25f);
