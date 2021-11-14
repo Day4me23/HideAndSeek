@@ -57,8 +57,14 @@ public class AI : MonoBehaviour
             Vector3 rotation = player.transform.position - transform.position;
             rotation = rotation.normalized;
 
-
-            Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity);
+            if (state == State.chasing)
+            {
+                Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity, 7);
+            }
+            else
+            {
+                Physics.Raycast(transform.position, rotation, out hit, Mathf.Infinity);
+            }
 
             switch (state)
             {
