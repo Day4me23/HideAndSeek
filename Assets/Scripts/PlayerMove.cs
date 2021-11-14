@@ -76,6 +76,7 @@ public class PlayerMove : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
     }
+
     void UpdateTablet()
     {
         if (Input.GetKey(KeyCode.LeftShift))
@@ -86,6 +87,7 @@ public class PlayerMove : MonoBehaviour
 
         Tablet.transform.localPosition = Vector3.Lerp(tabletRestPos, tabletLookPos, percent);
     }
+
     void Interact()
     {
         RaycastHit hit;
