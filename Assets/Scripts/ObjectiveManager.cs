@@ -18,7 +18,7 @@ public class ObjectiveManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        fuelFillbar = GameObject.Find("Fuelbar").GetComponent<Image>();
+        fuelFillbar = GameObject.Find("FuelBar").GetComponent<Image>();
     }
     void Update()
     {
