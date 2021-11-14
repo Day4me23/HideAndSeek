@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class AI : MonoBehaviour
 {
     NavMeshAgent navMeshAgent;
-    public Transform target;
+    //public Transform target;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject moveTarget;
+    //[SerializeField] GameObject moveTarget;
     public State state;
     public bool arrivedAtTarget;
 
@@ -42,7 +42,7 @@ public class AI : MonoBehaviour
         {
             arrivedAtTarget = navMeshAgent.remainingDistance < 1.5f;
 
-            if(distanceCheckCount > 30)
+            if(distanceCheckCount > 60)
             {
                 if(Vector3.Distance(lastPosition, transform.position) < .1)
                 {
