@@ -83,7 +83,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        //navMeshAgent.destination = playerLastPos;
+                        navMeshAgent.destination = playerLastPos;
                         if (arrivedAtTarget)
                         {
                             changeState(State.idle);
